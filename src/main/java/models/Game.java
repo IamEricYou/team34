@@ -68,14 +68,14 @@ public class Game {
 
 
     public void move(int columnFrom, int columnTo) {
-//    	Card new_card = getTopCard(columnFrom);
-//    	remove(columnFrom);
-//    	cols.get(columnFrom).add(new_card);
 
-        // remove the top card from the columnFrom column, add it to the columnTo column
-    	Card topcard = getTopCard(columnFrom);
-    	removeCardFromCol(columnFrom);
-    	addCardToCol(columnTo,topcard);
+	// if no cards on the column from, this function does nothing    
+    	// remove the top card from the columnFrom column, add it to the columnTo column
+    	if((columnHasCards(columnFrom))){	
+    		Card topcard = getTopCard(columnFrom);
+    		removeCardFromCol(columnFrom);
+    		addCardToCol(columnTo,topcard);
+    	}
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {
