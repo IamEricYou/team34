@@ -10,10 +10,9 @@ import java.util.Random;
 public class Game {
 
     public java.util.List<Card> deck = new ArrayList<>();
-
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
 
-
+    Card card;
     public Game(){
         //initialize a new game such that each column can store cards
         cols.add(new ArrayList<Card>());
@@ -34,7 +33,7 @@ public class Game {
     public void shuffle() {
         System.out.print("shuffle");
         // shuffles the deck so that it is random
-        java.util.List<Card> new_deck = new ArrayList<>();
+        /*java.util.List<Card> new_deck = new ArrayList<>();
         Random rand = new Random();
         for(int i = 0; i < 52; i++){
             int j = rand.nextInt(52);
@@ -54,7 +53,7 @@ public class Game {
         }
         for(int i = 0; i < 51; i++){
             this.deck.set(i, new_deck.get(i));
-        }
+        }*/
     }
 
     public void dealFour() {
@@ -73,14 +72,15 @@ public class Game {
 
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
-    	int length = cols.get(columnNumber).size();
-    	cols.get(columnNumber).remove(length - 1);
+    	int length = this.cols.get(columnNumber).size();
+    	if(length > 0)
+    		this.cols.get(columnNumber).remove(length - 1);
     }
 
     private boolean columnHasCards(int columnNumber) {
-//    	if(cols.get(columnNumber).isEmpty()) {
-//    		return false;
-//    	}
+    	if(cols.get(columnNumber).isEmpty()) {
+    		return false;
+    	}
         // check indicated column for number of cards; if no cards return false, otherwise return true
         return true;
     }
@@ -96,6 +96,9 @@ public class Game {
 //    	cols.get(columnFrom).add(new_card);
     	
         // remove the top card from the columnFrom column, add it to the columnTo column
+    	Card topcard = getTopCard(columnFrom);
+    	removeCardFromCol(columnFrom);
+    	addCardToCol(columnTo,topcard);
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {
