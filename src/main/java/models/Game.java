@@ -72,7 +72,7 @@ public class Game {
 	// if no cards on the column from, this function does nothing    
     	// remove the top card from the columnFrom column, add it to the columnTo column
     	if((columnHasCards(columnFrom))){	
-    		Card topcard = getTopCard(columnFrom);
+    		Card topcard = getTopCard(columnFrom); //this knows what card is moving.
     		removeCardFromCol(columnFrom);
     		addCardToCol(columnTo,topcard);
     	}
