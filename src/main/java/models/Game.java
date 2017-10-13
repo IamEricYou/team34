@@ -34,8 +34,8 @@ public class Game {
         System.out.print("shuffle");
         //has bad server error
 	// shuffles the deck so that it is random
-        /*java.util.List<Card> new_deck = new ArrayList<>();
-        Random rand = new Random();
+        java.util.List<Card> new_deck = new ArrayList<>();
+        java.util.Random rand = new Random();
         for(int i = 0; i < 52; i++){
             int j = rand.nextInt(52);
                 int placed = 0;
@@ -54,7 +54,7 @@ public class Game {
         }
         for(int i = 0; i < 51; i++){
             this.deck.set(i, new_deck.get(i));
-        }*/
+        }
     }
 
     public void dealFour() {
