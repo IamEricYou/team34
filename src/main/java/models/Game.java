@@ -32,15 +32,15 @@ public class Game {
 
     public void shuffle() {
         System.out.print("shuffle");
-        //has bad server error 
+        //has bad server error
 	// shuffles the deck so that it is random
-        /*java.util.List<Card> new_deck = new ArrayList<>();
+        java.util.List<Card> new_deck = new ArrayList<>();
         Random rand = new Random();
         for(int i = 0; i < 52; i++){
             int j = rand.nextInt(52);
                 int placed = 0;
                 while(placed == 0){
-                    if(new_deck.get(j).equals(null)){
+                    if(new_deck.get(j).isEmpty()){
                         placed = 1;
                         new_deck.set(j, this.deck.get(i));
                     }else{
@@ -54,7 +54,7 @@ public class Game {
         }
         for(int i = 0; i < 51; i++){
             this.deck.set(i, new_deck.get(i));
-        }*/
+        }
     }
 
     public void dealFour() {
@@ -95,7 +95,7 @@ public class Game {
 //    	Card new_card = getTopCard(columnFrom);
 //    	remove(columnFrom);
 //    	cols.get(columnFrom).add(new_card);
-    	
+
         // remove the top card from the columnFrom column, add it to the columnTo column
     	Card topcard = getTopCard(columnFrom);
     	removeCardFromCol(columnFrom);
