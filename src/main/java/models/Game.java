@@ -32,7 +32,8 @@ public class Game {
 
     public void shuffle() {
         System.out.print("shuffle");
-        // shuffles the deck so that it is random
+        //has bad server error 
+	// shuffles the deck so that it is random
         /*java.util.List<Card> new_deck = new ArrayList<>();
         Random rand = new Random();
         for(int i = 0; i < 52; i++){
