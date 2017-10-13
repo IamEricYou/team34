@@ -34,13 +34,13 @@ public class Game {
         System.out.print("shuffle");
         //has bad server error
 	// shuffles the deck so that it is random
-        java.util.List<Card> new_deck = new ArrayList<>();
+        /*java.util.List<Card> new_deck = new ArrayList<>();
         Random rand = new Random();
         for(int i = 0; i < 52; i++){
             int j = rand.nextInt(52);
                 int placed = 0;
                 while(placed == 0){
-                    if(new_deck.get(j).isEmpty()){
+                    if(new_deck.get(j).equals(null)){
                         placed = 1;
                         new_deck.set(j, this.deck.get(i));
                     }else{
@@ -54,7 +54,7 @@ public class Game {
         }
         for(int i = 0; i < 51; i++){
             this.deck.set(i, new_deck.get(i));
-        }
+        }*/
     }
 
     public void dealFour() {
@@ -73,9 +73,8 @@ public class Game {
 
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
-    	int length = this.cols.get(columnNumber).size();
-    	if(length > 0)
-    		this.cols.get(columnNumber).remove(length - 1);
+    	if(this.cols.get(columnNumber).size() > 0)
+    		removeCardFromCol(columnNumber);
     }
 
     private boolean columnHasCards(int columnNumber) {
