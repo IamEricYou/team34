@@ -1,3 +1,4 @@
-# team34
+# CS361 - TEAM 34 repo.
 
-# sprint 1, clone from cs361fall2017/sprint1
+# https://github.com/cs361fall2017/team34
+
