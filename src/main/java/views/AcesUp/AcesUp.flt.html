@@ -108,10 +108,29 @@
     </select>
 </div>
 
+<button onclick="help_button1()">HELP</button>
+<button onclick="cred_button1()">Credit</button>
+<button onclick="rst_button1()">RESET</button>
+
 <script>
 
     var game;
 
+    function help_button1() {
+        alert("HELP BOX");
+    }
+
+    function cred_button1() {
+        alert("Credits go here");
+    }
+
+    function rst_button1() {
+        if (confirm('Are you sure to reset the game?')) {
+            //reset it
+        } else {
+            // Do nothing!
+        }
+    }
     function display(game) {
         console.log(game);
 
