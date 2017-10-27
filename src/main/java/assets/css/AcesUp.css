@@ -1,3 +1,8 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  background-color: #f5f8fa;
+}
+
 tr{
 width:500px;
 }
@@ -63,8 +68,9 @@ select {
     padding-bottom: 20px;
     padding-right: 20px;
     font-size: 18;
-    position: relative;
-    top: -390;
-    left: -250;
-    float: right;
+    position: fixed;
+    margin: auto;
+    width: 25%;
+    text-align: center;
+    border-radius: 5px;
 }
