@@ -17,6 +17,8 @@
 package controllers;
 
 import models.Game;
+import models.Card;
+
 import ninja.Context;
 import ninja.Result;
 import ninja.Results;
@@ -48,7 +50,17 @@ public class ApplicationController {
     }
 
     public Result removeCard(Context context, @PathParam("column") int colNumber, Game g){
-        g.remove(colNumber);
+        int correct = 0;
+        Card cur_card = g.getTopCard(colNumber);
+        for(int i = 0; i < 4; i++){
+            Card temp_card = g.getTopCard(i);
+            if(temp_card.value > cur_card.value && temp_card.suit == cur_card.suit){
+                correct = 1;
+            }
+        }
+        if(correct == 1) {
+            g.remove(colNumber);
+        }
         return Results.json().render(g);
     }
 
