@@ -32,7 +32,7 @@ public class ApplicationController {
     public Result index() {
         return Results.html().template("views/AcesUp/AcesUp.flt.html");
     }
-    
+
     public Result gameGet(){
         Game g = new Game();
         g.buildDeck();
@@ -65,7 +65,10 @@ public class ApplicationController {
     }
 
     public Result moveCard(Context context, @PathParam("columnFrom") int colFrom, @PathParam("columnTo") int colTo, Game g){
-        g.move(colFrom,colTo);
+        Card from_card = g.getTopCard(colFrom);
+        if(from_card.value == 1 && g.columnHasCards(colTo) == false){
+            g.move(colFrom,colTo);
+        }
         return Results.json().render(g);
     }
 
