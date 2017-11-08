@@ -43,7 +43,7 @@ select {
     white-space: nowrap;
 }
 
-#moveButton {
+button {
     -webkit-appearance: button;
     -webkit-padding-start: 2px;
     background-color: #F2F7FF;
@@ -60,6 +60,23 @@ select {
     padding-bottom: 2px;
 }
 
+/*#moveButton {
+    -webkit-appearance: button;
+    -webkit-padding-start: 2px;
+    background-color: #F2F7FF;
+    background-position: center right;
+    background-repeat: no-repeat;
+    border: 1px solid #AAA;
+    border-radius: 2px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    color: #555;
+    font-size: inherit;
+    margin: 0;
+    overflow: hidden;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+*/
 #moveContainer {
     border-color: #031265;
     border-width: 1px;
@@ -113,7 +130,7 @@ select {
 
 .modal {
     display: none;
-    position: fixed; 
+    position: fixed;
     z-index: 1;
     left: 0;
     top: 0;
