@@ -32,11 +32,11 @@ public class ApplicationController {
     public Result index() {
         return Results.html().template("views/AcesUp/AcesUp.flt.html");
     }
-    
+
     public Result gameGet(){
         Game g = new Game();
-        g.buildDeck();
-        g.shuffle();
+      //  g.buildDeck();
+        g.d.shuffle();
         g.dealFour();
 
         return Results.json().render(g);
@@ -51,21 +51,24 @@ public class ApplicationController {
 
     public Result removeCard(Context context, @PathParam("column") int colNumber, Game g){
         int correct = 0;
-        Card cur_card = g.getTopCard(colNumber);
+        Card cur_card = g.p.getTopCard(colNumber);
         for(int i = 0; i < 4; i++){
-            Card temp_card = g.getTopCard(i);
+            Card temp_card = g.p.getTopCard(i);
             if(temp_card.value > cur_card.value && temp_card.suit == cur_card.suit){
                 correct = 1;
             }
         }
         if(correct == 1) {
-            g.remove(colNumber);
+            g.p.remove(colNumber);
         }
         return Results.json().render(g);
     }
 
     public Result moveCard(Context context, @PathParam("columnFrom") int colFrom, @PathParam("columnTo") int colTo, Game g){
-        g.move(colFrom,colTo);
+        Card from_card = g.p.getTopCard(colFrom);
+        if(g.p.cols.get(colTo).isEmpty() && from_card.getValue() == 14){
+            g.p.move(colFrom,colTo);
+        }
         return Results.json().render(g);
     }
 

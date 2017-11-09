@@ -116,7 +116,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <p>
-               <b>1.</b> Deal four cards in a row face up. 
+               <b>1.</b> Deal four cards in a row face up.
                <br><b>2.</b> If there are two or more cards of the same suit, discard all but the highest-ranked card of that suit. Aces rank high.
                <br><b>3.</b> Repeat step 2 until there are no more pairs of cards with the same suit.
                <br><b>4.</b> Whenever there are any empty spaces, you may choose the top card of another pile to be put into the empty space. After you do this, go to Step 2.
@@ -125,7 +125,7 @@
                <br><b>7.</b> When the last four cards have been dealt out and any moves made, the game is over. The fewer cards left in the tableau, the better. To win is to have only the four aces left.
                <br>
                <br><b>TIP</b>: When the game ends, the number of discarded cards is your score. The maximum score (and thus the score necessary to win) is 48, which means all cards have been discarded except for the four aces, thus the name of the game.
-               <br><b>Source from</b>: Wikipedia (https://en.wikipedia.org/wiki/Aces_Up)     
+               <br><b>Source from</b>: Wikipedia (https://en.wikipedia.org/wiki/Aces_Up)
             </p>
         </div>
     </div>
@@ -135,7 +135,7 @@
 <script>
 
     var game;
-    
+
     //From here
     var modal = document.getElementById('myModal');
     var btn = document.getElementById("myBtn");
@@ -175,19 +175,19 @@
 
         $('.columnOfCards .cardLocation').html("");
 
-        $.each(game.cols[0], function (key, val) {
+        $.each(game.p.cols[0], function (key, val) {
             $('#c0 .l' + key).html(val.value + val.suit);
         });
 
-        $.each(game.cols[1], function (key, val) {
+        $.each(game.p.cols[1], function (key, val) {
             $('#c1 .l' + key).html(val.value + val.suit);
         });
 
-        $.each(game.cols[2], function (key, val) {
+        $.each(game.p.cols[2], function (key, val) {
             $('#c2 .l' + key).html(val.value + val.suit);
         });
 
-        $.each(game.cols[3], function (key, val) {
+        $.each(game.p.cols[3], function (key, val) {
             $('#c3 .l' + key).html(val.value + val.suit);
         });
 
