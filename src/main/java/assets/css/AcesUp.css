@@ -111,7 +111,7 @@ select {
     right:200px;
 }
 
-.modal {
+.modal, .modal_credit{
     display: none;
     position: fixed; 
     z-index: 1;
@@ -124,7 +124,7 @@ select {
     background-color: rgba(0,0,0,0.4);
 }
 
-.modal-content {
+.modal-content, .modal-content_credit {
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
