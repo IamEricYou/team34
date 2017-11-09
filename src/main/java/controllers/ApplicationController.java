@@ -53,9 +53,11 @@ public class ApplicationController {
         int correct = 0;
         Card cur_card = g.p.getTopCard(colNumber);
         for(int i = 0; i < 4; i++){
-            Card temp_card = g.p.getTopCard(i);
-            if(temp_card.value > cur_card.value && temp_card.suit == cur_card.suit){
-                correct = 1;
+            if(g.p.cols.get(i).isEmpty() == false){
+                Card temp_card = g.p.getTopCard(i);
+                if (temp_card.value > cur_card.value && temp_card.suit == cur_card.suit) {
+                    correct = 1;
+                }
             }
         }
         if(correct == 1) {
