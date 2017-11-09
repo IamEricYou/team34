@@ -6,8 +6,7 @@
 
 <body>
 
-<button onclick="score()" id = "scoreButton">Score: </button>
-
+<div id = "score_btn">Score: </div>
 
 <tc class="columnOfCards" id="c0">
     <table>
@@ -116,6 +115,10 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <p>
+               <b>This game will work properly on Chrome browser.</b>
+               <br><br> 
+               <b>Rule</b>
+               <br>
                <b>1.</b> Deal four cards in a row face up.
                <br><b>2.</b> If there are two or more cards of the same suit, discard all but the highest-ranked card of that suit. Aces rank high.
                <br><b>3.</b> Repeat step 2 until there are no more pairs of cards with the same suit.
@@ -129,7 +132,7 @@
             </p>
         </div>
     </div>
-    <button id="myBtn_credit">Credit!!!</button>
+    <button id="myBtn_credit">Credit</button>
     <div id="myModal_credit" class="modal_credit">
         <div class="modal-content_credit">
             <span class="close">&times;</span>
@@ -145,7 +148,9 @@
 <script>
 
     var game;
-
+    var score_discard = 0;
+    /*score_discard++;
+    document.getElementById('score_btn').innerHTML = "Score: " + score_discard;*/
     //From here
     var modal = document.getElementById('myModal');
     var modal_credit = document.getElementById('myModal_credit');
@@ -153,6 +158,7 @@
     var btn_credit = document.getElementById('myBtn_credit');
     var span = document.getElementsByClassName("close")[0];
     var span_credit = document.getElementsByClassName("close")[1];
+    //var score_show = document.getElementById('score_btn').innerHTML = "Score: " + score_discard;
     
     btn.onclick = function() {
         modal.style.display = "block";
@@ -177,21 +183,12 @@
         }
     }
 
-    function cred_button1() {
-        alert("Credits go here");
-    }
-
     function rst_button1() {
         if (confirm('Are you sure to reset the game?')) {
             location.reload();
         } else {
             alert("You can do it, try it more!");
         }
-    }
-
-    function score() {
-    alert("Your score: (Coming soon");
-
     }
 
     function display(game) {
@@ -250,13 +247,14 @@
                 console.log("Data: " + data + "\nStatus: " + status);
                 game = data;
                 display(data);
+                score_discard++;
+                document.getElementById('score_btn').innerHTML = "Score: " + score_discard;
             },
             contentType: "application/json; charset=utf-8",
             dataType: "json",
         });
 
     }
-
 
     $("#Remove1").click(function () {
         removeCard(0);
