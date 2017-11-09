@@ -129,7 +129,17 @@
             </p>
         </div>
     </div>
-    <button onclick="cred_button1()">Credit</button>
+    <button id="myBtn_credit">Credit!!!</button>
+    <div id="myModal_credit" class="modal_credit">
+        <div class="modal-content_credit">
+            <span class="close">&times;</span>
+            <p>
+                <b>Credit
+                <br>Oregon State University - CS361 (Fall,2017)
+                <br>Team 34 
+            </p>
+        </div>
+    </div>
     <button onclick="rst_button1()">RESET</button>
 
 <script>
@@ -138,8 +148,12 @@
     
     //From here
     var modal = document.getElementById('myModal');
+    var modal_credit = document.getElementById('myModal_credit');
     var btn = document.getElementById("myBtn");
+    var btn_credit = document.getElementById('myBtn_credit');
     var span = document.getElementsByClassName("close")[0];
+    var span_credit = document.getElementsByClassName("close")[1];
+    
     btn.onclick = function() {
         modal.style.display = "block";
     }
@@ -151,7 +165,17 @@
             modal.style.display = "none";
         }
     }
-    //HELP - Function.
+    btn_credit.onclick = function() {
+        modal_credit.style.display = "block";
+    }
+    span_credit.onclick = function() {
+        modal_credit.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal_credit) {
+            modal_credit.style.display = "none";
+        }
+    }
 
     function cred_button1() {
         alert("Credits go here");
@@ -159,9 +183,9 @@
 
     function rst_button1() {
         if (confirm('Are you sure to reset the game?')) {
-            //reset it
+            location.reload();
         } else {
-            // Do nothing!
+            alert("You can do it, try it more!");
         }
     }
 
