@@ -1,8 +1,8 @@
 
 body {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
-  background-image: url('Desktop/wallpapers/Aces.jpg');
   background-color: green;
+  background-image: url('desktop/wallpapers/Aces.jpg');
 }
 
 tr{
@@ -151,77 +151,4 @@ button {
     color: black;
     text-decoration: none;
     cursor: pointer;
-}
-
-#dealButton {
-    color:black;
-    margin: 10px;
-    border: 3px solid black;
-}
-
-#moveContainer {
-    background-color: red;
-    margin: 40px;
-    width: 400px;
-    border: 3px solid black;
-    position: absolute;
-    left: 25%;
-
-}
-
-h1 {
-    font-family: 'PT Serif', serif;
-}
-
-#remove1 {
-    border: 3px solid black;
-    margin: 15px;
-}
-
-#remove2 {
-    border: 3px solid black;
-    margin: 15px;
-}
-
-#remove3 {
-    border: 3px solid black;
-    margin: 15px;
-}
-
-#remove4 {
-    border: 3px solid black;
-    margin: 15px;
-}
-
-#myBtn {
-    border: 3px solid black;
-    margin: 15px;
-}
-
-#myBtn_credit {
-    border: 3px solid black;
-    margin: 15px;
-}
-
-button {
-    border: 3px solid black;
-    margin: 15px;
-}
-
-#from_col {
-    border: 3px solid black;
-}
-
-#to_col {
-    border: 3px solid black;
-}
-
-td {
-    font-family: 'PT Serif', serif;
-}
-
-img {
-position: absolute;
-right: 0px;
-bottom: 0px;
 }
