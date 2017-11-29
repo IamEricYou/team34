@@ -14,7 +14,7 @@ public class Game {
     public Player p;
 
     public Game() {
-        d = new Deck();
+        d = new Deck(1);
         p = new Player();
     }
 
