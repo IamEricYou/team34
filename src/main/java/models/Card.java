@@ -17,7 +17,7 @@ public class Card implements Serializable {
         this.suit = suit;
         vis = Integer.toString(value);
         if(value > 10) {
-            System.out.println("The value is greater than 10");
+            //System.out.println("The value is greater than 10");
         	if(value == 11) {
         		vis = "J";
         	}
@@ -31,8 +31,8 @@ public class Card implements Serializable {
         		vis = "A";
         	}
         }
-        System.out.println("The displayed value should be");
-        System.out.println(this.vis);
+        //System.out.println("The displayed value should be");
+        //System.out.println(this.vis);
     }
 
     public Suit getSuit() {

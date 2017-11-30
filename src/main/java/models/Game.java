@@ -14,6 +14,7 @@ public class Game {
     public Player p;
     //initialized tells if the deck has been built, 0 == no
     public int initialized;
+    public int out_of_cards = 0;
 
     public Game() {
         p = new Player();
@@ -39,7 +40,8 @@ public class Game {
                 d.deck.remove(0);
             }
         } else {
-            System.out.print("out of cards");
+            out_of_cards = 1;
+            //System.out.print("out of cards");
         }
     }
 }

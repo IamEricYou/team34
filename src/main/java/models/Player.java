@@ -7,6 +7,8 @@ import java.util.Random;
 public class Player {
 
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
+    public int check_invalid = 0;
+    public int check_invalid_move = 0;
 
     public Player(){
         //initialize a new player such that each column can store cards
@@ -18,8 +20,13 @@ public class Player {
 
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
-    	  if(this.cols.get(columnNumber).size() > 0)
-    		    removeCardFromCol(columnNumber);
+        if(this.cols.get(columnNumber).size() > 0){
+            removeCardFromCol(columnNumber);
+            check_invalid = 1;
+        }
+        else{
+            //nothing
+        }
     }
 
     private boolean columnHasCards(int columnNumber) {
@@ -43,6 +50,7 @@ public class Player {
             Card topcard = getTopCard(columnFrom); //this knows what card is moving.
             removeCardFromCol(columnFrom);
             addCardToCol(columnTo,topcard);
+            check_invalid_move = 1;
         }
     }
 
