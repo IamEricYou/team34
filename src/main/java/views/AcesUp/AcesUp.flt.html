@@ -9,6 +9,17 @@
 
 <div id = "score_btn">Score: </div>
 
+<h3 id="deckBox">
+    <div> Deck Choice
+        <select id="deckChoice">
+            <option value="0">Normal</option>
+            <option value="1">Spanish</option>
+        </select>
+        <button id="confirmDeck">Choose</button>
+    </div>
+</h3>
+
+
 <tc class="columnOfCards" id="c0">
     <table>
         <td>Row 1</td>
@@ -138,9 +149,9 @@
         <div class="modal-content_credit">
             <span class="close">&times;</span>
             <p>
-                <b>Credit
+                <b>Credit</b>
                 <br>Oregon State University - CS361 (Fall,2017)
-                <br>Team 34 
+                <br>Team 34
             </p>
         </div>
     </div>
@@ -160,7 +171,7 @@
     var span = document.getElementsByClassName("close")[0];
     var span_credit = document.getElementsByClassName("close")[1];
     //var score_show = document.getElementById('score_btn').innerHTML = "Score: " + score_discard;
-    
+
     btn.onclick = function() {
         modal.style.display = "block";
     }
@@ -198,19 +209,19 @@
         $('.columnOfCards .cardLocation').html("");
 
         $.each(game.p.cols[0], function (key, val) {
-            $('#c0 .l' + key).html(val.value + val.suit);
+            $('#c0 .l' + key).html(val.vis + val.suit);
         });
 
         $.each(game.p.cols[1], function (key, val) {
-            $('#c1 .l' + key).html(val.value + val.suit);
+            $('#c1 .l' + key).html(val.vis + val.suit);
         });
 
         $.each(game.p.cols[2], function (key, val) {
-            $('#c2 .l' + key).html(val.value + val.suit);
+            $('#c2 .l' + key).html(val.vis + val.suit);
         });
 
         $.each(game.p.cols[3], function (key, val) {
-            $('#c3 .l' + key).html(val.value + val.suit);
+            $('#c3 .l' + key).html(val.vis + val.suit);
         });
 
 
@@ -254,8 +265,25 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
         });
-
     }
+
+    $("#confirmDeck").click(function(){
+        var f = document.getElementById("deckChoice");
+        var selectedDeck = f.options[f.selectedIndex].value;
+        $.ajax({
+            type: "POST",
+            url: "/chooseDeck/"+selectedDeck,
+            data: JSON.stringify(game),
+            success: function (data, status) {
+                console.log("Data: " + data + "\nStatus: " + status);
+                game = data;
+                display(data);
+            },
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+        });
+    });
+
 
     $("#Remove1").click(function () {
         removeCard(0);
@@ -281,7 +309,8 @@ $("#moveButton").click(function(){
     type: "POST",
     url: "/moveCard/"+colFrom+"/"+colTo,
     data: JSON.stringify(game),
-    success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+    success: function(data, status)
+        {console.log("Data: " + data + "\nStatus: " + status);
         game = data;
         display(data);},
     contentType:"application/json; charset=utf-8",
