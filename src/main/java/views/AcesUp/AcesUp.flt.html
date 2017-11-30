@@ -1,3 +1,7 @@
+<head>
+    <title>Team 34 - Aces Up</title>
+</head>
+
 <h1>Aces Up</h1>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen">
@@ -161,16 +165,13 @@
 
     var game;
     var score_discard = 0;
-    /*score_discard++;
-    document.getElementById('score_btn').innerHTML = "Score: " + score_discard;*/
-    //From here
     var modal = document.getElementById('myModal');
     var modal_credit = document.getElementById('myModal_credit');
     var btn = document.getElementById("myBtn");
     var btn_credit = document.getElementById('myBtn_credit');
     var span = document.getElementsByClassName("close")[0];
     var span_credit = document.getElementsByClassName("close")[1];
-    //var score_show = document.getElementById('score_btn').innerHTML = "Score: " + score_discard;
+    document.getElementById('score_btn').innerHTML = "Score: " + score_discard;
 
     btn.onclick = function() {
         modal.style.display = "block";
@@ -243,6 +244,10 @@
                 console.log("Data: " + data + "\nStatus: " + status);
                 game = data;
                 display(data);
+                if(game.out_of_cards == 1)
+                {
+                    alert("!! Out of cards !!")
+                }
             },
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -259,8 +264,14 @@
                 console.log("Data: " + data + "\nStatus: " + status);
                 game = data;
                 display(data);
-                score_discard++;
-                document.getElementById('score_btn').innerHTML = "Score: " + score_discard;
+                if(game.p.check_invalid == 1){
+                    score_discard++;
+                    document.getElementById('score_btn').innerHTML = "Score: " + score_discard;  
+                }
+                else{
+                    alert("Warning - Invalid Remove. \nThere is no higher card than the selected row.")
+                }
+                game.p.check_invalid = 0;
             },
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -309,10 +320,11 @@ $("#moveButton").click(function(){
     type: "POST",
     url: "/moveCard/"+colFrom+"/"+colTo,
     data: JSON.stringify(game),
-    success: function(data, status)
-        {console.log("Data: " + data + "\nStatus: " + status);
+    success: function(data, status){
+        console.log("Data: " + data + "\nStatus: " + status);
         game = data;
-        display(data);},
+        display(data);
+    },
     contentType:"application/json; charset=utf-8",
     dataType:"json",
   });
