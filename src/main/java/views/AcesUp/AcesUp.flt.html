@@ -15,7 +15,7 @@
             <option value="0">Normal</option>
             <option value="1">Spanish</option>
         </select>
-        <button>Choose</button>
+        <button id="confirmDeck">Choose</button>
     </div>
 </h3>
 
@@ -149,9 +149,9 @@
         <div class="modal-content_credit">
             <span class="close">&times;</span>
             <p>
-                <b>Credit
+                <b>Credit</b>
                 <br>Oregon State University - CS361 (Fall,2017)
-                <br>Team 34 
+                <br>Team 34
             </p>
         </div>
     </div>
@@ -265,8 +265,25 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
         });
-
     }
+
+    $("#confirmDeck").click(function(){
+        var f = document.getElementById("deckChoice");
+        var selectedDeck = f.options[f.selectedIndex].value;
+        $.ajax({
+            type: "POST",
+            url: "/chooseDeck/"+selectedDeck,
+            data: JSON.stringify(game),
+            success: function (data, status) {
+                console.log("Data: " + data + "\nStatus: " + status);
+                game = data;
+                display(data);
+            },
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+        });
+    });
+
 
     $("#Remove1").click(function () {
         removeCard(0);
@@ -292,7 +309,8 @@ $("#moveButton").click(function(){
     type: "POST",
     url: "/moveCard/"+colFrom+"/"+colTo,
     data: JSON.stringify(game),
-    success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+    success: function(data, status)
+        {console.log("Data: " + data + "\nStatus: " + status);
         game = data;
         display(data);},
     contentType:"application/json; charset=utf-8",

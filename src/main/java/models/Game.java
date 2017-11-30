@@ -12,10 +12,21 @@ public class Game {
     public Deck d;
     //public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
     public Player p;
+    //initialized tells if the deck has been built, 0 == no
+    public int initialized;
 
     public Game() {
-        d = new Deck(1);
         p = new Player();
+        initialized = 0;
+    }
+
+    public void createDeck(int type){
+        if(type == 1){
+            d = new Deck(1);
+        }else{
+            d = new Deck();
+        }
+        initialized = 1;
     }
 
     public void dealFour() {

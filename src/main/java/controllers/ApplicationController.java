@@ -36,9 +36,6 @@ public class ApplicationController {
     public Result gameGet(){
         Game g = new Game();
       //  g.buildDeck();
-        g.d.shuffle();
-        g.dealFour();
-
         return Results.json().render(g);
     }
 
@@ -74,4 +71,12 @@ public class ApplicationController {
         return Results.json().render(g);
     }
 
+    public Result chooseDeck(Context context, @PathParam("choice") int selectedDeck, Game g) {
+        if (g.initialized == 0) {
+            g.createDeck(selectedDeck);
+            g.d.shuffle();
+            g.dealFour();
+        }
+        return Results.json().render(g);
+    }
 }
