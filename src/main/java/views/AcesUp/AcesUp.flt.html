@@ -13,7 +13,7 @@
 
 <div id = "score_btn">Score: </div>
 
-<h3 id="deckBox">
+<!--<h3 id="deckBox">
     <div> Deck Choice
         <select id="deckChoice">
             <option value="0">Normal</option>
@@ -21,8 +21,7 @@
         </select>
         <button id="confirmDeck">Choose</button>
     </div>
-</h3>
-
+</h3>-->
 
 <tc class="columnOfCards" id="c0">
     <table>
@@ -133,7 +132,7 @@
             <p>
                <b>This game will work properly on Chrome browser.</b>
                <br><br> 
-               <b>Rule</b>
+               <b>Rule (Regular Deck)</b>
                <br>
                <b>1.</b> Deal four cards in a row face up.
                <br><b>2.</b> If there are two or more cards of the same suit, discard all but the highest-ranked card of that suit. Aces rank high.
@@ -142,9 +141,16 @@
                <br><b>5.</b>When there are no more cards to move or remove, deal out the next four cards from the deck face-up onto each pile.
                <br><b>6.</b> Repeat Step 2, using only the visible, or top, cards on each of the four piles.
                <br><b>7.</b> When the last four cards have been dealt out and any moves made, the game is over. The fewer cards left in the tableau, the better. To win is to have only the four aces left.
+               <br><br><br>
+               <b>Rule (Spanish Deck)</b>
+               <br><b>1.</b> Spanish deck uses the following suits: bastos (clubs), oros (golden coins), copas (cups), and espadas (swords).
+               <br><b>2.</b> Spanish deck contains 50 cards: nine ranked cards per suit (1-9), three face cards per suit (10-12), and 2 comodines cards (Jokers).
+               <br><b>3.</b> The Joker cards are considered wild cards, which means they match with any suit and act as the highest valued card for that suit, which means you can remove any card from the top of a pile. However, once the Joker card has been matched with another card in the game, both cards are removed from the game.
+               <br><b>4.</b> The standard deck in our AcesUp game contains 52 cards, which allows the game to guarantee that each deal will contain four cards (52/4 = 13 dealt sets of cards), but the Spanish deck contains 50 cards and will result in the last dealt set of cards having only two cards.
                <br>
                <br><b>TIP</b>: When the game ends, the number of discarded cards is your score. The maximum score (and thus the score necessary to win) is 48, which means all cards have been discarded except for the four aces, thus the name of the game.
-               <br><b>Source from</b>: Wikipedia (https://en.wikipedia.org/wiki/Aces_Up)
+               <br><b>Source from</b>: Wikipedia (https://en.wikipedia.org/wiki/Aces_Up) / Canvas Course Website
+               <br>            
             </p>
         </div>
     </div>
@@ -161,16 +167,32 @@
     </div>
     <button onclick="rst_button1()">RESET</button>
 
+    <div id="myModal_deckBox" class="modal_deckBox">
+        <div class="modal-content_deckBox">
+                <p><b>Select the deck option. (Regular / Spanish)</b>
+                    <br><b>The game can't be played without choosing one.</b>
+                    <br>
+                    <select id="deckChoice">
+                        <option value="0">Regular</option>
+                        <option value="1">Spanish</option>
+                    </select>
+                    <button id="confirmDeck">Choose</button>
+                </p>
+        </div>
+    </div>
+
 <script>
 
     var game;
     var score_discard = 0;
     var modal = document.getElementById('myModal');
     var modal_credit = document.getElementById('myModal_credit');
+    var modal_deck = document.getElementById('myModal_deckBox');
     var btn = document.getElementById("myBtn");
     var btn_credit = document.getElementById('myBtn_credit');
     var span = document.getElementsByClassName("close")[0];
     var span_credit = document.getElementsByClassName("close")[1];
+    var span_deck = document.getElementById('confirmDeck');
     document.getElementById('score_btn').innerHTML = "Score: " + score_discard;
 
     btn.onclick = function() {
@@ -194,6 +216,15 @@
         if (event.target == modal_credit) {
             modal_credit.style.display = "none";
         }
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == modal_deck) {
+            modal_deck.style.display = "none";
+        }
+    }
+    span_deck.onclick = function() {
+        modal_deck.style.display = "none";
     }
 
     function rst_button1() {
